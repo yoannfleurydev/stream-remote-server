@@ -4,20 +4,22 @@
   "description": "Control your stream from your phone",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently -k -n \"TypeScript,Node\" -p \"[{name}]\" -c \"blue,green\" \"tsc --watch\" \"nodemon dist/index.js\"",
-    "dev:win": "node_modules\\.bin\\concurrently.cmd -k -n \"TypeScript,Node\" -p \"[{name}]\" -c \"blue,green\" \"node_modules\\.bin\\tsc.cmd --watch\" \"node_modules\\.bin\\nodemon.cmd dist/index.js\""
+    "dev": "concurrently -k -n \"TypeScript,Node\" -p \"[{name}]\" -c \"blue,green\" \"tsc --watch\" \"nodemon dist/src/index.js\"",
+    "dev:win": "node_modules\\.bin\\concurrently.cmd -k -n \"TypeScript,Node\" -p \"[{name}]\" -c \"blue,green\" \"node_modules\\.bin\\tsc.cmd --watch\" \"node_modules\\.bin\\nodemon.cmd dist/src/index.js\""
   },
   "license": "MIT",
   "devDependencies": {
     "@types/errorhandler": "^0.0.32",
     "@types/express": "^4.16.1",
+    "@types/nedb": "^1.8.7",
     "@types/node": "^11.9.4",
     "concurrently": "^4.1.0",
-    "express": "^4.16.4",
     "nodemon": "^1.18.10",
     "typescript": "^3.3.3333"
   },
   "dependencies": {
-    "errorhandler": "^1.5.0"
+    "errorhandler": "^1.5.0",
+    "express": "^4.16.4",
+    "nedb": "^1.8.0"
   }
 }

@@ -1,26 +1,23 @@
 import * as express from "express";
-import * as cp from "child_process";
+import WindowsController from "./controller/WindowsController";
+import MainController from "./controller/MainController";
+import * as bodyParser from "body-parser";
 
 class App {
   public express;
 
   constructor() {
     this.express = express();
+    this.express.use(bodyParser.json());
     this.mountRoutes();
   }
 
   private mountRoutes(): void {
-    const router = express.Router();
-    router.get("/", (req, res) => {
-      cp.exec("explorer", (error, stdout, stderr) => {
-        console.error(error);
-      });
-      res.json({
-        message: "Hello World!"
-      });
-    });
+    let windowsController = new WindowsController();
+    let mainController = new MainController();
 
-    this.express.use("/", router);
+    this.express.use("/api", mainController.routes());
+    this.express.use("/windows", windowsController.routes());
   }
 }
 
