@@ -7,16 +7,17 @@ import { name } from "../../package.json";
 export const getAppDataStorage = (type: string): string => {
   const filename = `${type}.${DATA_STORAGE}`;
 
+  // APPDATA is only available on Windows
+  if (process.env.APPDATA) {
+    return process.env.APPDATA + "\\" + name + "\\" + filename;
+  }
+
+  // If the platform is darwin, then append Library/Preferences
+  // Else the platform is linux, then append /.local/share
   return (
-    // APPDATA is only available on Windows
-    process.env.APPDATA + "\\" + name + "\\" + filename ||
-    // If the platform is darwin, then append Library/Preferences
-    // Else the platform is linux, then append /.local/share
     process.env.HOME +
-      (process.platform === "darwin"
-        ? "Library/Preferences"
-        : "/.local/share") +
-      `/${name}/${filename}`
+    (process.platform === "darwin" ? "Library/Preferences" : "/.local/share") +
+    `/${name}/${filename}`
   );
 };
 
