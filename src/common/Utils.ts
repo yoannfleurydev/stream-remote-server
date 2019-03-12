@@ -23,6 +23,11 @@ export const getAppDataStorage = (type: string): string => {
 // Generate QR Code with the internal IP and the port of the server.
 export const generateIpQrCode = (port: string) => {
   internalIp.v4().then(ip => {
+    if (!ip) {
+      console.log("No IP available. Are you connected on a network?");
+      ip = "localhost";
+    }
+
     qrcode.setErrorLevel("Q");
     qrcode.generate(`${ip}:${port}`);
   });
