@@ -2,11 +2,11 @@ import { Response, Request } from "express";
 import Profile from "../entity/Profile";
 import database from "../common/Database";
 
-export const getHealth = (req, res) => {
+export const getHealth = (req: Request, res: Response) => {
   res.json({ status: "up" });
 };
 
-export const getHello = (req, res) => {
+export const getHello = (req: Request, res: Response) => {
   res.json({ message: "Hello World" });
 };
 

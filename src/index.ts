@@ -1,7 +1,9 @@
 import * as errorHandler from "errorhandler";
 import app from "./App";
+import { generateIpQrCode } from "./common/Utils";
 
-const PORT = process.env.PORT || 3000;
+const PORT: string = process.env.PORT || "3000";
+
 /**
  * Error Handler. Provides full stask - remove for production
  */
@@ -14,3 +16,5 @@ app.listen(PORT, err => {
 
   return console.log(`Server is listening on ${PORT}`);
 });
+
+generateIpQrCode(PORT);

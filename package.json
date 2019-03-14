@@ -4,8 +4,12 @@
   "description": "Control your stream from your phone",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently -k -n \"TypeScript,Node\" -p \"[{name}]\" -c \"blue,green\" \"tsc --watch\" \"nodemon dist/src/index.js\"",
-    "dev:win": "node_modules\\.bin\\concurrently.cmd -k -n \"TypeScript,Node\" -p \"[{name}]\" -c \"blue,green\" \"node_modules\\.bin\\tsc.cmd --watch\" \"node_modules\\.bin\\nodemon.cmd dist/src/index.js\""
+    "start": "tsc && node dist/src/index.js",
+    "start:win": "node_modules\\.bin\\tsc.cmd && node dist\\src\\index.js",
+    "watch:tsc:win": "node_modules\\.bin\\tsc.cmd --watch",
+    "watch:node:win": "node_modules\\.bin\\nodemon.cmd dist/src/index.js",
+    "watch": "concurrently -k -n \"TypeScript,Node\" -p \"[{name}]\" -c \"blue,green\" \"tsc --watch\" \"nodemon dist/src/index.js\"",
+    "watch:win": "node_modules\\.bin\\concurrently.cmd -k -n \"TypeScript,Node\" -p \"[{name}]\" -c \"blue,green\" \"node_modules\\.bin\\tsc.cmd --watch\" \"node_modules\\.bin\\nodemon.cmd dist/src/index.js\""
   },
   "license": "MIT",
   "devDependencies": {
@@ -20,6 +24,8 @@
   "dependencies": {
     "errorhandler": "^1.5.0",
     "express": "^4.16.4",
-    "nedb": "^1.8.0"
+    "internal-ip": "^4.2.0",
+    "nedb": "^1.8.0",
+    "qrcode-terminal": "^0.12.0"
   }
 }
