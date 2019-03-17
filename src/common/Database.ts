@@ -1,12 +1,14 @@
 import * as Nedb from "nedb";
 import { getAppDataStorage } from "../common/Utils";
+import Profile from "../entity/Profile";
+import Action from "../entity/Action";
 
 class Database {
   private _datastore: Nedb;
 
-  constructor() {
+  constructor(type: string) {
     this._datastore = new Nedb({
-      filename: getAppDataStorage(),
+      filename: getAppDataStorage(type),
       autoload: true
     });
   }
@@ -16,4 +18,7 @@ class Database {
   }
 }
 
-export default new Database();
+export default Database;
+
+export const profileRepository = new Database(Profile.TYPE);
+export const actionRepository = new Database(Action.TYPE);

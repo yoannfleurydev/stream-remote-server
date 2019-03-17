@@ -1,8 +1,6 @@
-import { Request, Response, Router } from "express";
-import * as cp from "child_process";
+import { Router } from "express";
 import Controller from "./Controller";
-
-const EXPLORER = "explorer";
+import { openExplorer } from "../service/WindowsService";
 
 class WindowsController implements Controller {
   _router: Router;
@@ -12,18 +10,7 @@ class WindowsController implements Controller {
   }
 
   routes(): Router {
-    this._router.get(`/${EXPLORER}`, (req: Request, res: Response) => {
-      cp.exec(
-        EXPLORER,
-        (error: cp.ExecException, stdout: string, stderr: string) => {
-          console.error(error);
-        }
-      );
-
-      res.json({
-        status: "success"
-      });
-    });
+    this._router.get("/explorer", openExplorer);
 
     return this._router;
   }

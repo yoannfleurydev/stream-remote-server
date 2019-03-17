@@ -4,17 +4,19 @@ import * as qrcode from "qrcode-terminal";
 import { name } from "../../package.json";
 
 // Get the directory of the system where applications store data.
-export const getAppDataStorage = (): string => {
+export const getAppDataStorage = (type: string): string => {
+  const filename = `${type}.${DATA_STORAGE}`;
+
   return (
     // APPDATA is only available on Windows
-    process.env.APPDATA + "\\" + name + "\\" + DATA_STORAGE ||
+    process.env.APPDATA + "\\" + name + "\\" + filename ||
     // If the platform is darwin, then append Library/Preferences
     // Else the platform is linux, then append /.local/share
     process.env.HOME +
       (process.platform === "darwin"
         ? "Library/Preferences"
         : "/.local/share") +
-      `/${name}/${DATA_STORAGE}`
+      `/${name}/${filename}`
   );
 };
 

@@ -1,4 +1,8 @@
-class Profile {
+import { Entity } from "./Entity";
+
+export default class Profile implements Entity {
+  public static TYPE = "PROFILE";
+
   _id: string;
   color: string;
   name: string;
@@ -8,5 +12,3 @@ class Profile {
     this.name = name;
   }
 }
-
-export default Profile;
