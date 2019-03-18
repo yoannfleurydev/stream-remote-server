@@ -44,6 +44,25 @@ export const getAction = (req: Request, res: Response) => {
   );
 };
 
+export const updateAction = (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  actionRepository.datastore.update(
+    {
+      _id: id
+    },
+    { $set: { ...req.body } },
+    { returnUpdatedDocs: true },
+    (err: Error, nbReplaced: number, action) => {
+      if (err) {
+        console.error(err, nbReplaced);
+      }
+
+      res.json(action);
+    }
+  );
+};
+
 export const deleteAction = (req: Request, res: Response) => {
   const { id } = req.params;
 

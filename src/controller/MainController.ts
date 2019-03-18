@@ -13,7 +13,8 @@ import {
   postAction,
   getActions,
   getAction,
-  deleteAction
+  deleteAction,
+  updateAction
 } from "../service/ActionService";
 
 class MainController implements Controller {
@@ -34,6 +35,7 @@ class MainController implements Controller {
     this._router.post("/actions", postAction);
     this._router.get("/actions", getActions);
     this._router.get("/actions/:id", getAction);
+    this._router.patch("/actions/:id", updateAction);
     this._router.delete("/actions/:id", deleteAction);
 
     return this._router;
