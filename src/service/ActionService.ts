@@ -3,7 +3,7 @@ import Action from "../entity/Action";
 import { actionRepository } from "../common/Database";
 
 export const postAction = (req: Request, res: Response) => {
-  const action: Action = req.body;
+  const action: Action = Action.fromObject(req.body);
 
   actionRepository.datastore.insert(action, (err: Error, document: Action) => {
     if (err) {
@@ -53,7 +53,7 @@ export const updateAction = (req: Request, res: Response) => {
     },
     { $set: { ...req.body } },
     { returnUpdatedDocs: true },
-    (err: Error, nbReplaced: number, action) => {
+    (err: Error, nbReplaced: number, action: Action) => {
       if (err) {
         console.error(err, nbReplaced);
       }
@@ -80,6 +80,21 @@ export const deleteAction = (req: Request, res: Response) => {
       } else {
         res.status(404).json({ message: `Action ${id} not found` });
       }
+    }
+  );
+};
+
+export const getActionsForProfile = (req: Request, res: Response) => {
+  const { profileId } = req.params;
+
+  actionRepository.datastore.find(
+    { profileId },
+    (err: Error, actions: Array<Action>) => {
+      if (err) {
+        console.log(err, actions);
+      }
+
+      res.json(actions);
     }
   );
 };

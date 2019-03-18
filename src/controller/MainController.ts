@@ -14,7 +14,8 @@ import {
   getActions,
   getAction,
   deleteAction,
-  updateAction
+  updateAction,
+  getActionsForProfile
 } from "../service/ActionService";
 
 class MainController implements Controller {
@@ -37,6 +38,7 @@ class MainController implements Controller {
     this._router.get("/actions/:id", getAction);
     this._router.patch("/actions/:id", updateAction);
     this._router.delete("/actions/:id", deleteAction);
+    this._router.get("/profiles/:profileId/actions", getActionsForProfile);
 
     return this._router;
   }
