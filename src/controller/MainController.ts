@@ -6,7 +6,8 @@ import {
   postProfile,
   getProfiles,
   getProfile,
-  deleteProfile
+  deleteProfile,
+  updateProfile
 } from "../service/ProfileService";
 import {
   postAction,
@@ -28,6 +29,7 @@ class MainController implements Controller {
     this._router.post("/profiles", postProfile);
     this._router.get("/profiles", getProfiles);
     this._router.get("/profiles/:id", getProfile);
+    this._router.patch("/profiles/:id", updateProfile);
     this._router.delete("/profiles/:id", deleteProfile);
     this._router.post("/actions", postAction);
     this._router.get("/actions", getActions);

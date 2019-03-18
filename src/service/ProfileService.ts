@@ -58,6 +58,25 @@ export const getProfile = (req: Request, res: Response) => {
   );
 };
 
+export const updateProfile = (req: Request, res: Response) => {
+  const { id } = req.params;
+
+  profileRepository.datastore.update(
+    {
+      _id: id
+    },
+    { $set: { ...req.body } },
+    { returnUpdatedDocs: true },
+    (err: Error, nbReplaced: number, documents) => {
+      if (err) {
+        console.error(err, nbReplaced);
+      }
+
+      res.json(documents);
+    }
+  );
+};
+
 export const deleteProfile = (req: Request, res: Response) => {
   const { id } = req.params;
 
