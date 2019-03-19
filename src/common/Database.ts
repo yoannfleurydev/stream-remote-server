@@ -1,4 +1,4 @@
-import * as Nedb from "nedb";
+import Nedb from "nedb";
 import { getAppDataStorage } from "../common/Utils";
 import Profile from "../entity/Profile";
 import Action from "../entity/Action";
