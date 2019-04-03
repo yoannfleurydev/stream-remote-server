@@ -1,8 +1,7 @@
 import { Router } from "express";
 import Controller from "./Controller";
+import { getHealth } from "../service/WebService";
 import {
-  getHealth,
-  getHello,
   postProfile,
   getProfiles,
   getProfile,
@@ -27,7 +26,6 @@ class MainController implements Controller {
 
   routes(): Router {
     this._router.get("/health", getHealth);
-    this._router.get("/hello", getHello);
     this._router.post("/profiles", postProfile);
     this._router.get("/profiles", getProfiles);
     this._router.get("/profiles/:id", getProfile);

@@ -2,14 +2,6 @@ import { Response, Request } from "express";
 import Profile from "../entity/Profile";
 import { profileRepository } from "../common/Database";
 
-export const getHealth = (req: Request, res: Response) => {
-  res.json({ status: "up" });
-};
-
-export const getHello = (req: Request, res: Response) => {
-  res.json({ message: "Hello World" });
-};
-
 export const postProfile = (req: Request, res: Response) => {
   const profile: Profile = req.body;
 

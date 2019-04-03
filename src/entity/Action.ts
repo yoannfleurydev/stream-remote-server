@@ -6,18 +6,18 @@ export default class Action implements Entity {
   _id: string;
   name: string;
   icon: string;
-  executable: Executable;
+  executables: Array<Executable>;
   profileId: string;
 
   constructor(
     name: string,
     icon: string,
-    executable: Executable,
+    executable: Array<Executable>,
     profileId: string
   ) {
     this.name = name;
     this.icon = icon;
-    this.executable = executable;
+    this.executables = executable;
     this.profileId = profileId;
   }
 
@@ -25,19 +25,19 @@ export default class Action implements Entity {
     return new Action(
       action.name,
       action.icon,
-      action.executable,
+      action.executables,
       action.profileId
     );
   }
 }
 
-interface Executable {
+export interface Executable {
   method: Method;
   route: string;
   parameters: Map<string, string>;
 }
 
-enum Method {
+export enum Method {
   GET,
   POST
 }
