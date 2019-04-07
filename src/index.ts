@@ -1,6 +1,10 @@
 import errorHandler from "errorhandler";
 import app from "./App";
 import { generateIpQrCode } from "./common/Utils";
+import { savePlugins } from "./service/PluginService";
+
+// Load all the plugins in database
+savePlugins();
 
 const PORT: string = process.env.PORT || "3000";
 

@@ -16,6 +16,7 @@ import {
   updateAction,
   getActionsForProfile
 } from "../service/ActionService";
+import { getPlugins } from "../service/PluginService";
 
 class MainController implements Controller {
   _router: Router;
@@ -37,6 +38,7 @@ class MainController implements Controller {
     this._router.patch("/actions/:id", updateAction);
     this._router.delete("/actions/:id", deleteAction);
     this._router.get("/profiles/:profileId/actions", getActionsForProfile);
+    this._router.get("/plugins", getPlugins);
 
     return this._router;
   }

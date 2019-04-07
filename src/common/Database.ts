@@ -2,6 +2,7 @@ import Nedb from "nedb";
 import { getAppDataStorage } from "../common/Utils";
 import Profile from "../entity/Profile";
 import Action from "../entity/Action";
+import Plugin from "../entity/Plugin";
 
 class Database {
   private _datastore: Nedb;
@@ -22,3 +23,4 @@ export default Database;
 
 export const profileRepository = new Database(Profile.TYPE);
 export const actionRepository = new Database(Action.TYPE);
+export const pluginRepository = new Database(Plugin.TYPE);
