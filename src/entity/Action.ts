@@ -6,18 +6,18 @@ export default class Action implements Entity {
   _id: string;
   name: string;
   icon: string;
-  executables: Array<Executable>;
+  operations: Array<Executable>;
   profileId: string;
 
   constructor(
     name: string,
     icon: string,
-    executable: Array<Executable>,
+    operations: Array<Executable>,
     profileId: string
   ) {
     this.name = name;
     this.icon = icon;
-    this.executables = executable;
+    this.operations = operations;
     this.profileId = profileId;
   }
 
@@ -25,10 +25,17 @@ export default class Action implements Entity {
     return new Action(
       action.name,
       action.icon,
-      action.executables,
+      action.operations,
       action.profileId
     );
   }
+}
+
+export interface Operation {
+  key: string;
+  name: string;
+  description: string;
+  executable: Executable;
 }
 
 export interface Executable {

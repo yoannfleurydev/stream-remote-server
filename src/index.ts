@@ -3,13 +3,13 @@ import app from "./App";
 import { generateIpQrCode } from "./common/Utils";
 import { savePlugins } from "./service/PluginService";
 
-// Load all the plugins in database
+// Load all the plugins in database at the boot of the server.
 savePlugins();
 
 const PORT: string = process.env.PORT || "3000";
 
 /**
- * Error Handler. Provides full stask - remove for production
+ * Error Handler. Provides full stack - remove for production
  */
 app.use(errorHandler());
 

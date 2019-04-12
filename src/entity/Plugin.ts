@@ -6,6 +6,11 @@ export default class Plugin implements Entity {
 
   _id: string;
   pluginPath: string;
+
+  /**
+   * The name of the plugin. Match the package.json name so it should be unique
+   * all the time
+   */
   name: string;
   main: string;
   key: string;

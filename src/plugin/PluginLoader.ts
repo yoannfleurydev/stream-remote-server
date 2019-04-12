@@ -57,5 +57,5 @@ const createPlugin = (pluginPath: string, directory: Dirent): Plugin => {
     packageJson.main
   }`);
 
-  return new Plugin(pluginPath, directory, packageJson.main, operations);
+  return new Plugin(pluginPath, directory, packageJson, operations);
 };
